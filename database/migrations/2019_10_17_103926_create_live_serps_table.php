@@ -20,7 +20,8 @@ class CreateLiveSerpsTable extends Migration
             $table->text('URL');
             $table->integer('locatia');
             $table->string('se_id');
-
+            $table->string('engine_name');
+            $table->string('country');
             $table->timestamps();
         });
     }

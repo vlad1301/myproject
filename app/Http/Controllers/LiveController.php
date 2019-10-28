@@ -43,20 +43,21 @@ class LiveController extends Controller
      */
     public function store(Request $request)
     {
+       // require('/var/www/myproject/myproject/resources/files/RestClient.php');
         //
         $search_key=$request->cuvant_cheie;
         $search_engine=$request->se_name;
         $se_language=$request->se_language;
-        //$loc_name_canonical=$request->locatie;
+        //$loc_name_canonical=$request->se_location;
         $loc_name_canonical='Bucharest,Romania';
         //$url=$request->domeniu;
 
-        require('C:\xampp\htdocs\myproject\resources\files\RestClient.php');
+        require('/var/www/myproject/myproject/resources/files/RestClient.php');
 //You can download this file from here https://api.dataforseo.com/_examples/php/_php_RestClient.zip
-
+        $api_url = 'https://api.dataforseo.com/';
         try {
             //Instead of 'login' and 'password' use your credentials from https://my.dataforseo.com/login
-            $client = new RestClient('https://api.dataforseo.com/', null, 'revenco_andrei@yahoo.com', 'FlMtt4RWJK7697VU');
+            $client = new RestClient($api_url, null, 'revenco_andrei@yahoo.com', 'FlMtt4RWJK7697VU');
         } catch (RestClientException $e) {
             echo "\n";
             print "HTTP code: {$e->getHttpCode()}\n";
@@ -74,6 +75,7 @@ class LiveController extends Controller
 
         $my_unq_id = mt_rand(0, 30000000); //your unique ID. we will return it with all results. you can set your database ID, string, etc.
         $post_array[$my_unq_id] = array(
+            /* "priority" => 1,*/
             "se_name" => $search_engine,
             "se_language" => $se_language,
             "loc_name_canonical"=> $loc_name_canonical,
@@ -91,7 +93,7 @@ class LiveController extends Controller
             $result_body=$result['results']['paid'];
             //$body=$result['results']/*['organic']*/;
 
-           /*dd($result_body);*/
+           /* print_r($result_body);*/
 
             $temp_data = array();
             $inc = 0;
@@ -111,25 +113,19 @@ class LiveController extends Controller
 
                 LiveSerp::create(['data_interogare'=>$results['result_datetime'],'keyword'=>$results['post_key'],'URL'=>$results['result_url'],'locatia'=>$results['loc_id'],'se_id'=>$results['se_id'],
                     'engine_name'=>$results['engine_name'],'country'=>$results['location_name']]);
-               //echo $results['result_url'];
+                //echo $results['result_url'];
                 //$engine=Engine::find($results['se_id']);
 
             }
-
 
             //do something with post results
 
             $post_array = array();
 
-             //return redirect('C:\xampp\htdocs\myproject\resources\views\live\current_results.blade.php');
+            return view('live.current_results', compact('result_body'));
 
 
-           // dd($result_body);
-
-            return view('live.current_results', compact('result_body'));//["NumeVariabilaView" => $variabila, ]
-
-             //return view('C:\xampp\htdocs\myproject\resources\views\live\search.blade.php');
-            //return redirect()->back();
+            // dd($result_body);
 
         } catch (RestClientException $e) {
             echo "\n";
@@ -141,7 +137,6 @@ class LiveController extends Controller
         }
 
         $client = null;
-
 
     }
 
@@ -188,50 +183,77 @@ class LiveController extends Controller
 
     public function search(){
 
+        /*$language=Engine::where()*/
+
     return view('live.search');
 
     }
 
     public function search_engine(Request $request)
+    {
+        if($request->get('query'))
         {
-            if($request->get('query'))
+            $query = $request->get('query');
+            $data = DB::table('engines')
+                ->where('se_name', 'LIKE', "%{$query}%")
+
+                ->get();
+            $output1 = '<ul class="dropdown-menu" style="display:block; position:relative">';
+            foreach($data as $row)
             {
-                $query = $request->get('query');
-                $data = DB::table('engines')
-                    ->where('se_name', 'LIKE', "%{$query}%")
-                    ->get();
-                $output1 = '<ul class="dropdown-menu" style="display:block; position:relative">';
-                foreach($data as $row)
-                {
-                    $output1 .= '
-       <li><a href="#">'.$row->se_name.'</a></li>
-       ';
-                }
-                $output1 .= '</ul>';
-                echo $output1;
+                $output1 .= '
+   <li><a href="#">'.$row->se_name.'</a></li>
+   ';
             }
+            $output1 .= '</ul>';
+            echo $output1;
         }
+    }
 
 
     public function search_language(Request $request)
-{
-    if($request->get('query'))
     {
-        $query = $request->get('query');
-        $data = DB::table('engines')
-            ->where('se_language', 'LIKE', "%{$query}%")
-            ->get();
-        $output = '<ul class="dropdown-menu" style="display:block; position:relative">';
-        foreach($data as $row)
+        if($request->get('query'))
         {
-            $output .= '
-       <li><a href="#">'.$row->se_language.'</a></li>
-       ';
+            $query = $request->get('query');
+            $data = DB::table('engines')
+                ->where('se_name', $query)
+                ->distinct('se_language')
+                ->get();
+            $output = '<select class="dropdown-menu" style="display:block; position:relative">';
+            foreach($data as $row)
+            {
+                $output .= '
+           <option><a href="#">'.$row->se_language.'</a></option>
+           ';
+            }
+            $output .= '</select>';
+            echo $output;
         }
-        $output .= '</ul>';
-        echo $output;
     }
-}
+
+
+    public function search_location(Request $request)
+    {
+        if($request->get('query'))
+        {
+            $query = $request->get('query');
+            $data = DB::table('locations')
+                ->where('name', 'LIKE', "%{$query}%")
+                ->take(10)
+                ->get();
+            $output = '<ul class="dropdown-menu" style="display:block; position:relative">';
+            foreach($data as $row)
+            {
+                $output .= '
+       <li><a href="#">'.$row->name.'</a></li>
+       ';
+            }
+            $output .= '</ul>';
+            echo $output;
+        }
+    }
+
 
 
     public function all_results(){

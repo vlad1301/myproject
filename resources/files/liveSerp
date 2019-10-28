@@ -1,0 +1,79 @@
+ require('/var/www/myproject/myproject/resources/files/RestClient.php');
+//You can download this file from here https://api.dataforseo.com/_examples/php/_php_RestClient.zip
+        $api_url = 'https://api.dataforseo.com/';
+        try {
+            //Instead of 'login' and 'password' use your credentials from https://my.dataforseo.com/login
+            $client = new RestClient($api_url, null, 'revenco_andrei@yahoo.com', 'FlMtt4RWJK7697VU');
+        } catch (RestClientException $e) {
+            echo "\n";
+            print "HTTP code: {$e->getHttpCode()}\n";
+            print "Error code: {$e->getCode()}\n";
+            print "Message: {$e->getMessage()}\n";
+            print  $e->getTraceAsString();
+            echo "\n";
+            exit();
+        }
+
+        $post_array = array();
+
+
+
+
+        $my_unq_id = mt_rand(0, 30000000); //your unique ID. we will return it with all results. you can set your database ID, string, etc.
+        $post_array[$my_unq_id] = array(
+           /* "priority" => 1,*/
+            "se_name" => $search_engine,
+            "se_language" => $se_language,
+            "loc_name_canonical"=> $loc_name_canonical,
+            "key" =>  mb_convert_encoding($search_key, "UTF-8"),
+            //"url"=>$url
+        );
+
+        try {
+            // POST /v2/live/srp_tasks_post/$data
+            // $tasks_data must by array with key 'data'
+            $result = $client->post('v2/live/srp_tasks_post', array('data' => $post_array));
+            //print_r($result);
+
+            //$result_organic=$result['results']['organic'];
+            $result_body=$result['results']['paid'];
+            //$body=$result['results']/*['organic']*/;
+
+           /*dd($result_body);*/
+
+            $temp_data = array();
+            $inc = 0;
+            foreach($result_body as $result):
+                $temp_data[$inc] = $result;
+                $se_id_temp = Engine::where('se_id', $result['se_id'])->first();
+
+                $temp_data[$inc]['engine_name'] = $se_id_temp->se_name;
+                $temp_data[$inc]['location_name'] = $se_id_temp->se_country_name;
+
+                $inc += 1;
+            endforeach;
+            $result_body = $temp_data;
+
+            foreach ($result_body as $results){
+                //LiveSerp::create(['keyword'=>$results['post_key'], 'URL'=>$results['result_url']]);
+
+
+
+
+
+
+                LiveSerp::create(['data_interogare'=>$results['result_datetime'],'keyword'=>$results['post_key'],'URL'=>$results['result_url'],'locatia'=>$results['loc_id'],'se_id'=>$results['se_id'],
+                    'engine_name'=>$results['engine_name'],'country'=>$results['location_name']]);
+               //echo $results['result_url'];
+                //$engine=Engine::find($results['se_id']);
+
+            }
+
+  //do something with post results
+
+            $post_array = array();
+
+             //return redirect('C:\xampp\htdocs\myproject\resources\views\live\current_results.blade.php');
+
+
+           // dd($result_body);

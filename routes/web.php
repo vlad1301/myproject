@@ -29,6 +29,7 @@ Route::resource('results', 'LiveController');
 
 Route::post('/search/engine', 'LiveController@search_engine')->name('search.engine');
 Route::post('/search/language', 'LiveController@search_language')->name('search.language');
+Route::post('/search/location', 'LiveController@search_location')->name('search.location');
 //Route::post('/autocomplete/fetch', 'AutocompleteController@fetch')->name('autocomplete.fetch');
 
 

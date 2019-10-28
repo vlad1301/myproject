@@ -51,6 +51,15 @@
         </div>
     </div>
 
+
+    <div class="container box">
+        <div class="form-group">
+            <input type="text" name="se_location" id="se_location" class="form-control input-lg" placeholder="Enter location" />
+            <div id="search_location">
+            </div>
+        </div>
+    </div>
+
     <div class="container box">
         <div class="form-group">
             <input class="btn btn-primary" type="submit" value="Cauta">
@@ -111,6 +120,34 @@
             $('#search_language').fadeOut();
 
         });
+
+        $('#se_location').keyup(function(){
+            var query = $(this).val();
+            if(query != '')
+            {
+                var _token = $('input[name="_token"]').val();
+                $.ajax({
+                    url:"{{ route('search.location') }}",
+                    method:"POST",
+                    data:{query:query, _token:_token},
+                    success:function(data){
+                        $('#search_location').fadeIn();
+                        $('#search_location').html(data);
+                    }
+                });
+            }
+        });
+
+        $('#search_location').on('click', 'li', function(){
+
+            $('#se_location').val($(this).text());
+            $('#search_location').fadeOut();
+
+            //console.log($engine_name);
+        });
+
+
+
 
     });
 </script>

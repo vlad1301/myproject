@@ -87,12 +87,12 @@ class EnginesController extends Controller
 
     public function get_engines(){
 
-        require('C:\xampp\htdocs\myproject\resources\files\RestClient.php');
+        require('/var/www/myproject/myproject/resources/files/RestClient.php');
 //You can download this file from here https://api.dataforseo.com/_examples/php/_php_RestClient.zip
 
         try {
             //Instead of 'login' and 'password' use your credentials from https://my.dataforseo.com/login
-            $client = new RestClient('https://api.dataforseo.com/', null, 'cozmutavlad@yahoo.com', 'EEX3NeUe4OI1raLD');
+            $client = new RestClient('https://api.dataforseo.com/', null, 'revenco_andrei@yahoo.com', 'FlMtt4RWJK7697VU');
 
             $se_get_result = $client->get('v2/cmn_se');
             //print_r($se_get_result);
@@ -103,9 +103,15 @@ class EnginesController extends Controller
             foreach ($results_body as $results){
                 //echo $results['se_localization'] . '</br>';
 
+                if(isset($results['se_localization'])){
+                     $se_localization=$results['se_localization'];
+                }else{
+                    $se_localization='not available';
+                }
+
 
             Engine::create(['se_id'=>$results['se_id'], 'se_name'=>$results['se_name'] , 'se_country_iso_code'=>$results['se_country_iso_code'],
-            'se_country_name'=>$results['se_country_name'], 'se_language'=>$results['se_language']/*, 'se_localization'=>$results['se_localization']*/]);
+            'se_country_name'=>$results['se_country_name'], 'se_language'=>$results['se_language'], 'se_localization'=>$se_localization]);
 
             }
             //print_r($results_body);

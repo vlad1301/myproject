@@ -20,7 +20,7 @@ class CreateEnginesTable extends Migration
             $table->string('se_country_iso_code');
             $table->string('se_country_name');
             $table->string('se_language');
-            $table->integer('se_localization')->default('0');
+            $table->string('se_localization')->default('no_default_val');
             $table->timestamps();
         });
     }

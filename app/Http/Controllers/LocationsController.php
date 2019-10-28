@@ -89,13 +89,13 @@ class LocationsController extends Controller
 
     public function get_locations(){
 
-        require('C:\xampp\htdocs\myproject\resources\files\RestClient.php');
+        require('/var/www/myproject/myproject/resources/files/RestClient.php');
 //You can download this file from here https://api.dataforseo.com/_examples/php/_php_RestClient.zip
 
         try {
             //Instead of 'login' and 'password' use your credentials from https://my.dataforseo.com/login
             //$client = new RestClient('https://api.dataforseo.com/', null, 'login', 'password');
-            $client = new RestClient('https://api.dataforseo.com/', null, 'cozmutavlad@yahoo.com', 'EEX3NeUe4OI1raLD');
+            $client = new RestClient('https://api.dataforseo.com/', null, 'revenco_andrei@yahoo.com', 'FlMtt4RWJK7697VU');
             $loc_get_result = $client->get('v2/cmn_locations');
             //print_r($loc_get_result);
 
