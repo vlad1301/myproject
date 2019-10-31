@@ -13,7 +13,8 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        //
+        Commands\TaskerCron::class,
+        Commands\RetrieverCron::class
     ];
 
     /**
@@ -24,8 +25,11 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')
-        //          ->hourly();
+        $schedule->command('tasker:cron')
+            ->daily();
+
+        $schedule->command('retriever:cron')
+            ->daily();
     }
 
     /**

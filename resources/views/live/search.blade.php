@@ -18,9 +18,7 @@
         .box{
             width:600px;
             margin:0 auto;
-            /*position: absolute;
-            cursor: default;
-            z-index: 30 !important;*/
+
         }
     </style>
 </head>
@@ -75,22 +73,6 @@
 </body>
 </html>
 
-{{--<script>--}}
-{{--    $(function() {--}}
-{{--        $("#search_engine").autocomplete({--}}
-{{--            source: "{{ route('search.engine') }}",--}}
-{{--        });--}}
-{{--    });--}}
-{{--</script>--}}
-
-
-
-
-
-
-
-
-
 <script>
     var engine_name;
     var a;
@@ -116,6 +98,16 @@
                     }
                 });
             }
+
+            $('#search_engine').on('click', 'li', function(){
+                    $('#se_name').val($(this).text());
+                    $('#search_engine').fadeOut();
+
+                });
+
+
+
+
         });
 
         $('#se_name').change(function(){
@@ -136,15 +128,13 @@
 
         });
 /*
-        $('#search_engine').on('click', 'li', function(){
-           $engine_name=$('#se_name').val($(this).text());
-            $('#search_engine').fadeOut();*/
+        */
           /*  return $engine_name.val();
 
             console.log($engine_name);*/
 
 
-        });
+       /* });*/
 
         $('#se_language').keyup(function(){
             var query = $(this).val();

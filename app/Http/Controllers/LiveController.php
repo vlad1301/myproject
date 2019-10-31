@@ -195,9 +195,11 @@ class LiveController extends Controller
         {
             $query = $request->get('query');
             $data = DB::table('engines')
+                ->select('se_name')
+                ->distinct()
                 ->where('se_name', 'LIKE', "%{$query}%")
-
                 ->get();
+
             $output1 = '<ul class="dropdown-menu" style="display:block; position:relative">';
             foreach($data as $row)
             {
@@ -209,7 +211,6 @@ class LiveController extends Controller
             echo $output1;
         }
     }
-
 
     public function search_language(Request $request)
     {
@@ -260,6 +261,10 @@ class LiveController extends Controller
         $all_results=LiveSerp::all();
         //$loca = Student::with('grade')->get();
         return view('live.all_results', compact('all_results'));
+    }
+
+    public function taskuri(Request $request){
+        DB::table
     }
 
 }

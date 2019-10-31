@@ -11,9 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'LiveController@search');
+
+
 
 
 Route::get('/engines', 'EnginesController@get_engines');
@@ -34,3 +34,13 @@ Route::post('/search/location', 'LiveController@search_location')->name('search.
 
 
 Route::get ('/all_results',['uses'=>'LiveController@all_results'])->name('C:\xampp\htdocs\myproject\resources\views\live\all_results.blade.php');
+
+Route::get('/tasker' , function() {
+    Artisan::call('tasker:cron');
+});
+
+Route::get('/retriever' , function() {
+    Artisan::call('retriever:cron');
+});
+
+Route::get('/taskuri', 'LiveController@taskuri');
