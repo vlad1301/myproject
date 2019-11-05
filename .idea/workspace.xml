@@ -2,12 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4be8bc23-1a0e-44a0-9b22-10b5d0a8d2d8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Console/Commands/RetrieverCron.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/task/Task.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/taskuri/taskResults.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Console/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Console/Kernel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Console/Commands/RetrieverCron.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Console/Commands/RetrieverCron.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Console/Commands/TaskerCron.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Console/Commands/TaskerCron.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/LiveController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/LiveController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_10_31_150442_tasks.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/db/js/common.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/db/js/common.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/db/js/vendor/codemirror/mode/sql/sql.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/db/js/vendor/codemirror/mode/sql/sql.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/db/js/vendor/zxcvbn.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/db/js/vendor/zxcvbn.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/db/libraries/classes/Server/Status/Monitor.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/db/libraries/classes/Server/Status/Monitor.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/db/libraries/config.default.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/db/libraries/config.default.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/live/search.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/live/search.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/task/Task.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/taskuri/set_task.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -179,6 +186,8 @@
       <workItem from="1572251613643" duration="7584000" />
       <workItem from="1572261076356" duration="16836000" />
       <workItem from="1572512555155" duration="16213000" />
+      <workItem from="1572853054501" duration="15926000" />
+      <workItem from="1572940602422" duration="24679000" />
     </task>
     <servers />
   </component>

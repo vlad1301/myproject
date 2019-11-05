@@ -2,8 +2,10 @@
 
 namespace App\Console\Commands;
 
+use App\Task;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
+use PhpMyAdmin\Dbi\DbiDummy;
 use RestClient;
 use RestClientException;
 
@@ -47,11 +49,36 @@ class TaskerCron extends Command
         require('/var/www/myproject/myproject/resources/files/RestClient.php');
         //SCOTI DIN BD
 
+            $key_array=DB::table('tasks')->get();
 
-        $key_array = array("caiet", "seo url", "ceva");
-        $se_id = "270";
-        $loc_id = "1011795";
-        //SCOTI DIN BD
+            $post_array=array();
+
+            foreach ($key_array as $key){
+                //$task_id=$key->taskjobs;
+                //DD($key->taskjobs);
+
+                    $unique_id=$key->id;
+                    $keyword=$key->keyword;
+
+                    $urlProiect=$key->urlProiect;
+                    $post_id=$unique_id . $urlProiect;
+
+                    $search_engine_name=$key->search_engine_name;
+                    $search_engine_language=$key->search_engine_language;
+                    $location=$key->location_name;
+
+                    $post_array[$post_id] = array(
+
+                        "se_name" => $search_engine_name,
+                        "se_language"=>$search_engine_language,
+                        "loc_name_canonical" => $location,
+                        "key" => mb_convert_encoding($keyword, "UTF-8")
+                    );
+
+                };
+
+
+
 
         $api_url = 'https://api.dataforseo.com/';
         try {
@@ -66,7 +93,7 @@ class TaskerCron extends Command
             exit();
         }
 
-        $post_array = array();
+        /*$post_array = array();
 
         foreach($key_array as $keyword):
 
@@ -76,16 +103,28 @@ class TaskerCron extends Command
                 "key" => mb_convert_encoding($keyword, "UTF-8")
             );
 
-        endforeach;
+        endforeach;*/
 
         if (count($post_array) > 0) {
             try {
                 // POST /v2/srp_tasks_post/$tasks_data
                 // $tasks_data must by array with key 'data'
                 $task_post_result = $client->post('/v2/srp_tasks_post', array('data' => $post_array));
-                print_r($task_post_result);
 
-                //INSEREI IN BD
+                /* echo "<pre>";
+                print_r($task_post_result);
+                echo "</pre>";*/
+
+                $task_results=$task_post_result['results'];
+                foreach ($task_results as $task){
+
+                    /*echo $task['task_id'];*/
+                    DB::table('taskjobs')->insert(['taskId'=>$task['task_id'], 'postId'=>$task['post_id'],'postKey'=>$task['post_key']]);
+                }
+
+
+
+                //INSEREZI IN BD
 
                 //do something with post results
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Engine;
 use App\LiveSerp;
+use App\Task;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use RestClient;
@@ -221,14 +222,20 @@ class LiveController extends Controller
                 ->where('se_name', $query)
                 ->distinct('se_language')
                 ->get();
-            $output = '<select class="dropdown-menu" style="display:block; position:relative">';
+            /*$output = '<select class="dropdown-menu" style="display:block; position:relative">';*/
+            $output = '<ul class="dropdown-menu" style="display:block; position:relative">';
             foreach($data as $row)
             {
+               /* $output .= '
+           <option><a href="#">'  . $row->se_language . '</a></option>';*/
+
                 $output .= '
-           <option><a href="#">'.$row->se_language.'</a></option>
-           ';
+       <li><a href="#">'.$row->se_language.'</a></li>
+       ';
+
             }
-            $output .= '</select>';
+            /*$output .= '</select>';*/
+            $output .= '</ul>';
             echo $output;
         }
     }
@@ -263,8 +270,16 @@ class LiveController extends Controller
         return view('live.all_results', compact('all_results'));
     }
 
-    public function taskuri(Request $request){
-        DB::table
+    public function set_task(){
+
+        return view('taskuri.set_task');
+
     }
+
+    public function write_task(Request $request)
+    {
+
+    }
+
 
 }

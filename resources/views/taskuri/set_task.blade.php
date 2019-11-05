@@ -24,14 +24,13 @@
 </head>
 <body>
 <br />
-<form method="post" action="/tasker" autocomplete="off">
+<form method="post" action="/tasks" autocomplete="off">
     {{ csrf_field() }}
     <h3 align="center">Setare taskuri</h3><br />
 
     <div class="container box">
         <div class="form-group">
             <input type="text" name="cuvant_cheie" id="keyword" class="form-control input-lg" placeholder="Cuvant cheie" />
-
             <div id="cuvant_cheie">
             </div>
 
@@ -39,8 +38,19 @@
     </div>
 
     <div class="container box">
+    <div class="form-group">
+        <input type="text" name="url_proiect" id="url_proiect" class="form-control input-lg" placeholder="URL proiect" />
+       {{-- <div id="cuvant_cheie">--}}
+
+
+    </div>
+    </div>
+
+
+    <div class="container box">
         <div class="form-group">
             <input type="text" name="se_name" id="se_name" class="form-control input-lg" placeholder="Enter search engine" />
+
             <div id="search_engine">
             </div>
 
@@ -49,7 +59,10 @@
 
     <div class="container box">
         <div class="form-group">
-            <input type="text" name="se_language" id="se_language" class="form-control input-lg" placeholder="Enter search language" />
+            <input type="select" name="se_language" id="se_language" class="form-control input-lg" placeholder="Enter search language" />
+           {{-- <select name="se_language" id="se_language">
+                <option value="">--Please choose an option--</option>
+            </select>--}}
             <div id="search_language">
             </div>
         </div>

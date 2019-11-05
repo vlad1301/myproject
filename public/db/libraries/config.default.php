@@ -3015,7 +3015,7 @@ $cfg['LinkLengthLimit'] = 1000;
 /**
  * Disable the table maintenance mass operations, like optimizing or
  * repairing the selected tables of a database. An accidental execution
- * of such a maintenance task can enormously slow down a bigger database.
+ * of such a maintenance taskuri can enormously slow down a bigger database.
  */
 $cfg['DisableMultiTableMaintenance'] = false;
 

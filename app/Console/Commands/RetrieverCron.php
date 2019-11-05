@@ -2,7 +2,9 @@
 
 namespace App\Console\Commands;
 
+use App\SerpResult;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\DB;
 use RestClient;
 use RestClientException;
 
@@ -44,7 +46,15 @@ class RetrieverCron extends Command
     public function handle()
     {
         //SCOTI DIN BD
-        $task_ids = array("12092919356", "12092919361", "12092919364");
+        $jobs=DB::table('taskjobs')->get();
+        $task_ids=array();
+        foreach ($jobs as $job){
+            $job_tasks=$job->taskId;
+
+            $task_ids[]=$job_tasks;
+
+        }
+
 
         require('/var/www/myproject/myproject/resources/files/RestClient.php');
         $api_url = 'https://api.dataforseo.com/';
@@ -62,10 +72,29 @@ class RetrieverCron extends Command
 
         foreach($task_ids as $task_id):
             $serp_result = $client->get('v2/srp_tasks_get/' . $task_id);
-            echo "<pre>";
-                print_r($serp_result);
-            echo "</pre>";
+
+               $results=$serp_result['results']['organic']/*['0']['result_url']*/;
+
+               foreach ($results as $result){
+                   /*echo '<pre>';
+                   print_r($result['result_url']);
+                   echo  '</pre>';*/
+
+               /*    DB::table('serp_results')->insert('')*/
+
+                   SerpResult::create(['resultPostId'=>$result['post_id'], 'resultTaskId'=>$result['task_id'], 'resultSeId'=>$result['se_id'], 'resultLocationId'=>$result['loc_id'], 'resultPostKey'=>$result['post_key'], 'resultDatetime'=>$result['result_datetime'], 'resultPosition'=>$result['result_position'], 'resultUrl'=>$result['result_url']]);
+
+               }
+
+        //SerpResult::create(['resultPostId'=>$serp_result[]])
         endforeach;
+
+/*
+        'resultPostKey',
+        'resultTaskId',
+        'resultSeId',
+        'resultLocationId',
+        'resultKeyId'*/
 
 
     }

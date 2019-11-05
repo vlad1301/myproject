@@ -49,7 +49,7 @@
 
 <div class="container box">
     <div class="form-group">
-        <input type="text" name="se_language" id="se_language" class="form-control input-lg" placeholder="Enter search language" />
+        <input type="select" name="se_language" id="se_language" class="form-control input-lg" placeholder="Enter search language" />
         <div id="search_language">
         </div>
     </div>

@@ -43,4 +43,7 @@ Route::get('/retriever' , function() {
     Artisan::call('retriever:cron');
 });
 
-Route::get('/taskuri', 'LiveController@taskuri');
+Route::get('/set_task', 'LiveController@set_task');
+Route::resource('tasks', 'TaskController');
+
+Route::get('/view_tasks_results', 'TaskController@view_tasks_results');

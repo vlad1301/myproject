@@ -268,7 +268,7 @@ PMA_DROP_IMPORT = {
         // -- provide link to cancel the upload
         $('.pma_sql_import_status div li[data-hash="' + hash +
             '"] span.filesize').html('<span hash="' +
-            hash + '" class="pma_drop_file_status" task="cancel">' +
+            hash + '" class="pma_drop_file_status" taskuri="cancel">' +
             PMA_messages.dropImportMessageCancel + '</span>');
 
         // -- add event listener to this link to abort upload operation
