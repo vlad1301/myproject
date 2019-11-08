@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Engine;
 use App\LiveSerp;
-use App\Task;
+use App\Project;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use RestClient;
@@ -247,14 +247,15 @@ class LiveController extends Controller
         {
             $query = $request->get('query');
             $data = DB::table('locations')
-                ->where('name', 'LIKE', "%{$query}%")
+                //->where([['name', 'LIKE', "%{$query}%"]])//, ['loc_type', '=', 'City']])
+                ->where('loc_name', 'LIKE', "%{$query}%")->where('loc_type', 'LIKE', 'City')
                 ->take(10)
                 ->get();
             $output = '<ul class="dropdown-menu" style="display:block; position:relative">';
             foreach($data as $row)
             {
                 $output .= '
-       <li><a href="#">'.$row->name.'</a></li>
+       <li><a href="#">'.$row->loc_name.'</a></li>
        ';
             }
             $output .= '</ul>';
@@ -268,17 +269,6 @@ class LiveController extends Controller
         $all_results=LiveSerp::all();
         //$loca = Student::with('grade')->get();
         return view('live.all_results', compact('all_results'));
-    }
-
-    public function set_task(){
-
-        return view('taskuri.set_task');
-
-    }
-
-    public function write_task(Request $request)
-    {
-
     }
 
 

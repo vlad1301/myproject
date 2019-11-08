@@ -46,7 +46,7 @@ class RetrieverCron extends Command
     public function handle()
     {
         //SCOTI DIN BD
-        $jobs=DB::table('taskjobs')->get();
+        $jobs=DB::table('tasks')->get();
         $task_ids=array();
         foreach ($jobs as $job){
             $job_tasks=$job->taskId;
@@ -76,26 +76,12 @@ class RetrieverCron extends Command
                $results=$serp_result['results']['organic']/*['0']['result_url']*/;
 
                foreach ($results as $result){
-                   /*echo '<pre>';
-                   print_r($result['result_url']);
-                   echo  '</pre>';*/
 
-               /*    DB::table('serp_results')->insert('')*/
-
-                   SerpResult::create(['resultPostId'=>$result['post_id'], 'resultTaskId'=>$result['task_id'], 'resultSeId'=>$result['se_id'], 'resultLocationId'=>$result['loc_id'], 'resultPostKey'=>$result['post_key'], 'resultDatetime'=>$result['result_datetime'], 'resultPosition'=>$result['result_position'], 'resultUrl'=>$result['result_url']]);
-
+                   SerpResult::create(['resultPostId'=>$result['post_id'], 'resultTaskId'=>$result['task_id'], 'resultSeId'=>$result['se_id'], 'resultLocationId'=>$result['loc_id'],
+                       'resultPostKey'=>$result['post_key'], 'resultDatetime'=>$result['result_datetime'], 'resultPosition'=>$result['result_position'], 'resultUrl'=>$result['result_url']]);
                }
 
-        //SerpResult::create(['resultPostId'=>$serp_result[]])
         endforeach;
-
-/*
-        'resultPostKey',
-        'resultTaskId',
-        'resultSeId',
-        'resultLocationId',
-        'resultKeyId'*/
-
 
     }
 }

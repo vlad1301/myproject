@@ -15,8 +15,12 @@ class CreateLocationsTable extends Migration
     {
         Schema::create('locations', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
-            $table->integer('location_id')->default('0');
+            $table->bigInteger('loc_id');
+            $table->bigInteger('loc_id_parent')->nullable();
+            $table->string('loc_name');
+            $table->string('loc_name_canonical');
+            $table->string('loc_type');
+            $table->string('loc_country_iso_code');
             $table->timestamps();
         });
     }

@@ -103,15 +103,15 @@ class EnginesController extends Controller
             foreach ($results_body as $results){
                 //echo $results['se_localization'] . '</br>';
 
-                if(isset($results['se_localization'])){
+                if(isset($results['se_localization']) && $results['se_localization']){
                      $se_localization=$results['se_localization'];
                 }else{
                     $se_localization='not available';
                 }
 
 
-            Engine::create(['se_id'=>$results['se_id'], 'se_name'=>$results['se_name'] , 'se_country_iso_code'=>$results['se_country_iso_code'],
-            'se_country_name'=>$results['se_country_name'], 'se_language'=>$results['se_language'], 'se_localization'=>$se_localization]);
+            Engine::create(['se_id'=>$results['se_id'], 'se_name'=>$results['se_name'], 'se_country_iso_code'=>$results['se_country_iso_code'],
+            'se_country_name'=>$results['se_country_name'], 'se_language'=>$results['se_language'], 'se_localization'=> $se_localization]);
 
             }
             //print_r($results_body);

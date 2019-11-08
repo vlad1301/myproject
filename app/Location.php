@@ -8,7 +8,11 @@ class Location extends Model
 {
     //
     protected $fillable=[
-        //'name', 'location_id'
-        'name', 'location_id'
+        'loc_id',
+        'loc_id_parent',
+        'loc_name',
+        'loc_name_canonical',
+        'loc_type',
+        'loc_country_iso_code',
     ];
 }

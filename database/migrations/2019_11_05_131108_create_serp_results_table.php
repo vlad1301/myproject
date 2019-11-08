@@ -18,6 +18,8 @@ class CreateSerpResultsTable extends Migration
     {
         Schema::create('serp_results', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->integer('project_id');
+            $table->integer('task_id');
             $table->string('resultPostId');
             $table->bigInteger('resultTaskId');
             $table->bigInteger('resultSeId');
@@ -26,10 +28,6 @@ class CreateSerpResultsTable extends Migration
             $table->string('resultDatetime');
             $table->bigInteger('resultPosition');
             $table->string('resultUrl');
-          /*
-            $table->bigInteger('resultSeId');
-            $table->bigInteger('resultLocationId');
-            $table->bigInteger('resultKeyId');*/
             $table->timestamps();
         });
     }

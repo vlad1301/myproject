@@ -2,19 +2,50 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4be8bc23-1a0e-44a0-9b22-10b5d0a8d2d8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/taskuri/taskResults.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/ProjectsController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/db/tmp/twig/0c/0caa7bb0dbf12c07ae782976259ef395873d41ab3f9f3065a234ad94a870ae52.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/db/tmp/twig/12/12a04c8c845199f32efd7e723119e643cc163ff63f7ad5dc13f49cdfb3c47f40.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/db/tmp/twig/13/13c43d42e28cdb70b213dfc4560ab03f92a18d9a61bc31134e29b673e938c57b.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/db/tmp/twig/24/24a66ebf66e0f8931b30d3c2104d890807f38bc728e4bebd0ea980fb0b892398.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/db/tmp/twig/36/364e28bd2ddc000c471718d77f476fc83a951649a3ce3422e04a9cf08b19709c.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/db/tmp/twig/38/38997382290040437adf95f59bf4894b8a1a7bc64057767b1f9a2e3c2b8aea0a.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/db/tmp/twig/44/44bd485d370f5f14d7548a78b193b7abd87e2a09cf00fc5189df4ac7a942db4e.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/db/tmp/twig/92/92fdaf0423eb896f301836abff615c4c63b7ee94e1705f8cc2a735001d19a353.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/db/tmp/twig/9f/9fe5775021a41eb4b2b9e6e4e213fbcdfc1d3525f7532ec575b2e3cab43684aa.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/db/tmp/twig/a2/a27eb1fa70e6298cafb56089064ad8ec51274e439acf510e50ac3a0adf65fba3.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/db/tmp/twig/a2/a2f82a068744a90be01600f26765724d37559f6466e76fd22de332bdf01683a5.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/db/tmp/twig/aa/aa83f39797af77dccf229bf0de44ada867a91a171ae1604b11f0c9b5e28527b1.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/db/tmp/twig/af/af8cb837379b0b8ea52505cbebef6943de1eda11a6bb4545ebc38811a106795a.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/db/tmp/twig/be/beb7e374dc0bebcfc0a532503047bcef9f76cc4577da1cc81c3e65b095bfeee6.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/db/tmp/twig/c4/c4c2717160563d2785f0b9af2f71be23c55b8e37c808ff49e76f54983bce4b00.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/db/tmp/twig/cc/ccd8ffaa367bfa84244dc64967edf2376e2ccb5fb196cefea973bfb4bce35a96.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/db/tmp/twig/ce/ce8d777fce0e416bb6447473a36f58973e020e2bf5995688266d7dad54512821.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/db/tmp/twig/d9/d9cb8443fbb332e43a8eadfb801bc3bb57f3242ae0c7f129ad9923de222f54f3.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/db/tmp/twig/ef/ef0d68b8aa4f31835825caff1eb78c0d8ff007ea010c3666058d3ffe3b917034.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/db/tmp/twig/f0/f0fcf6e8ee1c8b9dcf94cf5c112e855013f2e3e729fcb8c5686814c00bc0b730.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/db/tmp/twig/f1/f1142ab7232b9569651957e3145344b4ba5e01d118a2dfdf03ba3ec1de9a9f24.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/db/tmp/twig/f1/f1e958ae4842bf6f2b994344d877f2b4e167ba636f40a86ec36d4e4f19830949.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Console/Commands/RetrieverCron.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Console/Commands/RetrieverCron.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Console/Commands/TaskerCron.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Console/Commands/TaskerCron.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/EnginesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/EnginesController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/LiveController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/LiveController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_10_31_150442_tasks.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/LocationsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/LocationsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TaskController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Location.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Location.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Task.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Project.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_10_16_115420_create_locations_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_10_16_115420_create_locations_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_10_21_110551_create_engines_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_10_21_110551_create_engines_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_11_04_101253_create_tasks_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_11_04_101253_create_projects_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_11_05_102636_taskjobs.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_11_05_102636_tasks.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_11_05_131108_create_serp_results_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_11_05_131108_create_serp_results_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/db/js/common.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/db/js/common.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/db/js/vendor/codemirror/mode/sql/sql.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/db/js/vendor/codemirror/mode/sql/sql.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/db/js/vendor/zxcvbn.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/db/js/vendor/zxcvbn.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/db/libraries/classes/Server/Status/Monitor.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/db/libraries/classes/Server/Status/Monitor.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/db/libraries/config.default.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/db/libraries/config.default.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/live/search.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/live/search.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/task/Task.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/taskuri/set_task.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/taskuri/set_task.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/project/set_project.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/taskuri/taskResults.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/project/projectsResults.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -187,7 +218,13 @@
       <workItem from="1572261076356" duration="16836000" />
       <workItem from="1572512555155" duration="16213000" />
       <workItem from="1572853054501" duration="15926000" />
-      <workItem from="1572940602422" duration="24679000" />
+      <workItem from="1572940602422" duration="25477000" />
+      <workItem from="1573113262933" duration="12381000" />
+      <workItem from="1573126901275" duration="4083000" />
+      <workItem from="1573131930874" duration="3946000" />
+      <workItem from="1573198880555" duration="5415000" />
+      <workItem from="1573206439090" duration="4103000" />
+      <workItem from="1573214978868" duration="9459000" />
     </task>
     <servers />
   </component>

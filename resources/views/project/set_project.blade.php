@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Setare taskuri</title>
+    <title>Setare proiect</title>
 
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -24,45 +24,41 @@
 </head>
 <body>
 <br />
-<form method="post" action="/tasks" autocomplete="off">
+<form method="post" action="/projects" autocomplete="off">
     {{ csrf_field() }}
-    <h3 align="center">Setare taskuri</h3><br />
-
+    <h3 align="center">Setare proiect</h3><br />
     <div class="container box">
-        <div class="form-group">
+       {{-- <div class="form-group">
             <input type="text" name="cuvant_cheie" id="keyword" class="form-control input-lg" placeholder="Cuvant cheie" />
+            <div id="cuvant_cheie">
+            </div>
+        </div>--}}
+        <div class="form-group">
+            <textarea rows="2" cols="50"  name="cuvant_cheie" id="keyword" class="form-control input-lg" placeholder="Cuvant cheie" /></textarea>
             <div id="cuvant_cheie">
             </div>
 
         </div>
+
     </div>
 
     <div class="container box">
     <div class="form-group">
         <input type="text" name="url_proiect" id="url_proiect" class="form-control input-lg" placeholder="URL proiect" />
-       {{-- <div id="cuvant_cheie">--}}
-
-
     </div>
     </div>
-
 
     <div class="container box">
         <div class="form-group">
             <input type="text" name="se_name" id="se_name" class="form-control input-lg" placeholder="Enter search engine" />
-
             <div id="search_engine">
             </div>
-
         </div>
     </div>
 
     <div class="container box">
         <div class="form-group">
             <input type="select" name="se_language" id="se_language" class="form-control input-lg" placeholder="Enter search language" />
-           {{-- <select name="se_language" id="se_language">
-                <option value="">--Please choose an option--</option>
-            </select>--}}
             <div id="search_language">
             </div>
         </div>
@@ -87,9 +83,6 @@
 </html>
 
 <script>
-    var engine_name;
-    var a;
-
     $(document).ready(function(){
 
         $('#se_name').keyup(function(){
@@ -117,10 +110,6 @@
                 $('#search_engine').fadeOut();
 
             });
-
-
-
-
         });
 
         $('#se_name').change(function(){
@@ -134,20 +123,9 @@
                 success:function(data){
                     $('#search_language').fadeIn();
                     $('#search_language').html(data);
-                    /*return  $('#search_engine').html(data);*/
-
                 }
             });
-
         });
-        /*
-                */
-        /*  return $engine_name.val();
-
-          console.log($engine_name);*/
-
-
-        /* });*/
 
         $('#se_language').keyup(function(){
             var query = $(this).val();
@@ -170,10 +148,7 @@
 
             $('#se_language').val($(this).text());
             $('#search_language').fadeOut();
-
-            //console.log($engine_name);
         });
-
 
         $('#se_location').keyup(function(){
             var query = $(this).val();
@@ -197,10 +172,7 @@
             $('#se_location').val($(this).text());
             $('#search_location').fadeOut();
 
-            //console.log($engine_name);
         });
-
-
     });
 </script>
 

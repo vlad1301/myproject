@@ -101,16 +101,8 @@ class LocationsController extends Controller
 
             $body=$loc_get_result['results'];
             foreach ($body as $results){
-                //echo $results['loc_name'] . '<br>';
 
-                Location::create(['name'=>$results['loc_name'], 'location_id'=>$results['loc_id']]);
-           //Location::create(['location_id'=>$results['loc_id'], 'name'=>$results['loc_name']]);
-                //Location::create(['location_id'=>$results['loc_id']]);
-
-            //Post::create(['title'=>$item['result_title'], 'content'=>$item['result_url']]);
-            //return view('search.locations');
-            //do something with locations
-
+            Location::create(['loc_name'=>$results['loc_name'],'loc_id'=>$results['loc_id'], 'loc_id_parent'=>$results['loc_id_parent'], 'name'=>$results['loc_name'], 'loc_name_canonical'=>$results['loc_name_canonical'], 'loc_type'=>$results['loc_type'],'loc_country_iso_code'=>$results['loc_country_iso_code']]);
   }
         } catch (RestClientException $e) {
             echo "\n";

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Taskjobs extends Migration
+class Tasks extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class Taskjobs extends Migration
      */
     public function up()
     {
-        Schema::create('taskjobs', function (Blueprint $table) {
+        Schema::create('tasks', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->integer('project_id');  //shoud be nullable()
             $table->bigInteger('taskId');
             $table->string('postId');
             $table->string('postKey');
-
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ class Taskjobs extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('taskjobs');
+        Schema::dropIfExists('tasks');
     }
 }

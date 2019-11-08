@@ -2,7 +2,8 @@
 
 namespace App\Console\Commands;
 
-use App\Task;
+use App\Location;
+use App\Project;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
 use PhpMyAdmin\Dbi\DbiDummy;
@@ -49,36 +50,36 @@ class TaskerCron extends Command
         require('/var/www/myproject/myproject/resources/files/RestClient.php');
         //SCOTI DIN BD
 
-            $key_array=DB::table('tasks')->get();
+            $key_array=DB::table('projects')->get();
 
             $post_array=array();
 
             foreach ($key_array as $key){
-                //$task_id=$key->taskjobs;
-                //DD($key->taskjobs);
 
-                    $unique_id=$key->id;
+                    $project_id=$key->id;
                     $keyword=$key->keyword;
 
                     $urlProiect=$key->urlProiect;
-                    $post_id=$unique_id . $urlProiect;
+                    $post_id= $project_id . '/' .  $urlProiect;
 
                     $search_engine_name=$key->search_engine_name;
+                    $search_engine_id=$key->search_engine_id;
                     $search_engine_language=$key->search_engine_language;
-                    $location=$key->location_name;
+
+                    $location_name=$key->location_name;
+                $location_id=$key->location_id;
+
+
 
                     $post_array[$post_id] = array(
 
-                        "se_name" => $search_engine_name,
+                        "se_id" => $search_engine_id,
                         "se_language"=>$search_engine_language,
-                        "loc_name_canonical" => $location,
+                        "loc_id" => $location_id,
                         "key" => mb_convert_encoding($keyword, "UTF-8")
                     );
 
                 };
-
-
-
 
         $api_url = 'https://api.dataforseo.com/';
         try {
@@ -118,8 +119,9 @@ class TaskerCron extends Command
                 $task_results=$task_post_result['results'];
                 foreach ($task_results as $task){
 
+
                     /*echo $task['task_id'];*/
-                    DB::table('taskjobs')->insert(['taskId'=>$task['task_id'], 'postId'=>$task['post_id'],'postKey'=>$task['post_key']]);
+                    DB::table('tasks')->insert(['taskId'=>$task['task_id'], 'postId'=>$task['post_id'],'postKey'=>$task['post_key']]);
                 }
 
 

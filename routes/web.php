@@ -16,7 +16,7 @@ Route::get('/', 'LiveController@search');
 
 
 
-Route::get('/engines', 'EnginesController@get_engines');
+Route::get('/get_engines', 'EnginesController@get_engines');
 
 Route::get('/get_locations', 'LocationsController@get_locations');
 
@@ -43,7 +43,7 @@ Route::get('/retriever' , function() {
     Artisan::call('retriever:cron');
 });
 
-Route::get('/set_task', 'LiveController@set_task');
-Route::resource('tasks', 'TaskController');
+Route::get('/set_project', 'ProjectsController@set_project');
+Route::resource('projects', 'ProjectsController');
 
-Route::get('/view_tasks_results', 'TaskController@view_tasks_results');
+Route::get('/view_projects_results', 'ProjectsController@view_projects_results');

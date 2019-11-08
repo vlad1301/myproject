@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Task extends Model
+class Project extends Model
 {
     //
     protected $fillable=[
@@ -14,8 +14,9 @@ class Task extends Model
         'search_engine_language',
         'location_name',
         'task_id',
-        'taskjobs'
-
+        'taskjobs',
+        'search_engine_id',
+        'location_id'
 
     ];
 }
